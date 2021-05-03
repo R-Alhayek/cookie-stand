@@ -6,6 +6,7 @@ let seattle = {
     maxCust : 65,
     avgSale : 6.3,
     numberCust : [],
+    
 
       getnumberCust: function(){
          for (let i =0; i<hours.length; i++){
@@ -28,7 +29,7 @@ render: function () {
     articleEl.appendChild(ulEl);
     for (let i = 0; i < hours.length; i++) {
         let liEl = document.createElement('li');
-        liEl.textContent =`${hours}:this.cookiesPerHr[i]`;
+        liEl.textContent =`${hours[i]} : ${this.cookiesPerHr[i]} cookies`;
         ulEl.appendChild(liEl)
       }
 }
