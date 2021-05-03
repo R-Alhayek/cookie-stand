@@ -6,41 +6,42 @@ let seattle = {
     maxCust : 65,
     avgSale : 6.3,
     numberCust : [],
-    
+    cookiesPerHr : [],
+    totalCookieHr : 0,
 
-      getnumberCust: function(){
+      getnumberCust: function(min,max){
          for (let i =0; i<hours.length; i++){
-             this.numberCust.push(random(this.minCust, this.maxCust));
+             this.numberCust.push(Math.floor(Math.random() * (this.maxCust - this.minCust+ 1) + this.minCust));
              console.log(this.numberCust);
          }
      },
-     cookiesPerHr:function () {
-        return (this.avgSale * this.getnumberCust());
-        console.log(cookiesPerHr);
+     getcookiesPerHr:function () {
+        for (let i=0; i<hours.length; i++){
+            this.cookiesPerHr.push(Math.ceil(this.numberCust[i] * this.avgSale));
+            this.totalCookieHr += this.cookiesPerHr[i];
+        }
 } ,
 render: function () {
-    let divEl = document.getElementById('cookies');
-    let articleEl = document.createElement('article');
-    divEl.appendChild(articleEl);
-    let h4El = document.createElement('h4');
-    h4El.textContent = this.place;
-    articleEl.appendChild(h4El);
+    let container = document.getElementById('cookies');
+    let h3El = document.createElement('h3');
+    container.appendChild(h3El);
+    h3El.textContent = this.place;
     let ulEl = document.createElement('ul');
-    articleEl.appendChild(ulEl);
+    container.appendChild(ulEl);
     for (let i = 0; i < hours.length; i++) {
         let liEl = document.createElement('li');
+        ulEl.appendChild(liEl);
         liEl.textContent =`${hours[i]} : ${this.cookiesPerHr[i]} cookies`;
         ulEl.appendChild(liEl)
       }
+      let totalLi = document.createElement('li');
+      ulEl.appendChild(totalLi);
+      totalLi.textContent = `Total: ${this.totalCookieHr} cookies`;
 }
 }
-function random(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1) + min); 
-  }
-  seattle.getnumberCust();
-  seattle.cookiesPerHr();
 
+  seattle.getnumberCust(seattle.minCust, seattle.maxCust);
+  seattle.getcookiesPerHr();
+  seattle.render();
 
   
