@@ -1,6 +1,6 @@
 "use strict"
-let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
-let plces = [];
+let hours = ['6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm'];
+let places = [];
 function Cookiesplace(place, minCust, maxCust, avgSale) {
     this.place = place;
     this.minCust = minCust;
@@ -9,8 +9,9 @@ function Cookiesplace(place, minCust, maxCust, avgSale) {
     this.numberCust = [];
     this.cookiesPerHr = [];
     this.totalCookieHr = 0;
+    places.push(this);
 
-}
+
 Cookiesplace.prototype.getnumberCust = function (min, max) {
     for (let i = 0; i < hours.length; i++) {
         this.numberCust.push(Math.floor(Math.random() * (this.maxCust - this.minCust + 1) + this.minCust));
@@ -32,12 +33,13 @@ Cookiesplace.prototype.render = function () {
     tableEl2.textContent = this.place;
     for (let i = 0; i < hours.length; i++) {
         let tableEl3 = document.createElement('td');
-        table2.appendChild('tableEl3');
-        tableEl3.textContent = cookiesPerHr[i];
+        tableHeader.appendChild(tableEl3);
+        tableEl3.textContent = this.cookiesPerHr[i];
     }
     let tableEl4 = document.createElement('td');
-    table2.appendChild('tableEl4');
+    tableHeader.appendChild(tableEl4);
     tableEl4.textContent = this.totalCookieHr;
+}
 }
 let container = document.getElementById('cookies');
 let article = document.createElement('article');
@@ -49,7 +51,7 @@ function row1() {
     table2.appendChild(line1);
     let header = document.createElement('th');
     line1.appendChild(header);
-    let header1 = null;
+    header.textContent = null;
     for (let i = 0; i < hours.length; i++) {
         let header2 = document.createElement('th');
         line1.appendChild(header2);
@@ -65,22 +67,23 @@ function lastRow() {
     let data1 = document.createElement('td');
     lastLine.appendChild(data1);
     data1.textContent = 'Totals';
-    for (i = 0; i < hours.length; i++) {
+    let total2 =0;
+    for (let i = 0; i < hours.length; i++) {
         let total = 0;
         for (let j = 0; j < places.length; j++) {
-            total2 = total + places[j].cookiesPerHr[i];
-            total += places[j].cookiesPerHr[i];
+            total = total + places[j].cookiesPerHr[i];
+            total2 += places[j].cookiesPerHr[i];
         }
      let data2 = document.createElement('td');
-    table2.appendChild(data2);
-    data2.textContent = total2;
+    lastLine.appendChild(data2);
+    data2.textContent = total;
     }
 
 let data3 = document.createElement('td');
-table2.appendChild(data3);
-data3.textContent = total;
+lastLine.appendChild(data3);
+data3.textContent = total2;
 }
-
+console.log(places);
 row1();
 
 let seattle = new Cookiesplace('seattle', 35, 65, 6.3);
