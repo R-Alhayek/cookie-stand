@@ -1,0 +1,19 @@
+table, td {
+    border: 1px rgb(0, 0, 0) solid;
+    
+}
+h1 {
+    color: rgb(82, 82, 82);
+    text-align: center;
+}
+nav ul li  {
+    display: inline-block;
+    background-color:#cb25d1 ;
+    border-width: 2px;
+    border-radius: 5px;
+    font-size: 20px;
+    
+}
+body {
+    background-color:#2cc1cc ;
+}
