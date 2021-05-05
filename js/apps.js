@@ -113,5 +113,3 @@ lima.getcookiesPerHr();
 lima.render();
 
 lastRow();
-  
-
