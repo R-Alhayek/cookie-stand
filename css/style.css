@@ -2,18 +2,56 @@ table, td {
     border: 1px rgb(0, 0, 0) solid;
     
 }
+ 
 h1 {
-    color: rgb(82, 82, 82);
+    color: rgb(59, 59, 59);
     text-align: center;
 }
 nav ul li  {
     display: inline-block;
-    background-color:#cb25d1 ;
+    background-color:#c75fca ;
     border-width: 2px;
     border-radius: 5px;
-    font-size: 20px;
-    
+    font-size: 20px; 
+}
+li a {
+    padding: 10px;
+    margin-right: 20px;
+    text-decoration: none;
 }
 body {
-    background-color:#2cc1cc ;
+    background-color:#06aadb ;
+}
+div {
+    
+    float:left;
+    margin:5px;
+}
+section p {
+ font-size: 25px;
+ text-align: center;
+ color: rgb(61, 60, 60);
+ font-weight: bolder;
+}
+section img {
+    width: 600px;
+    padding-left: 450px;
+    border-radius: 15px;
+}
+div p {
+    font-size: 25px;
+    text-align: center;
+    color: rgb(61, 60, 60);
+    font-weight: bolder;   
+}
+div img {
+    border-width: 2px;
+    border-radius: 15px;
+    width:250px;
+    padding-left: 30px;
+}
+div ul  {
+    background-color:#e6e0e6 ;
+    padding-left: 40px;
+    margin-left: 25px;
 }
