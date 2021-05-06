@@ -1,7 +1,16 @@
-"use strict"
+"use strict";
 
 let hours = ['6:00am', '7:00am', '8:00am', '9:00am', '10:00am', '11:00am', '12:00pm', '1:00pm', '2:00pm', '3:00pm', '4:00pm', '5:00pm', '6:00pm', '7:00pm'];
 let places = [];
+
+let container = document.getElementById('cookies');
+
+let article = document.createElement('article');
+container.appendChild(article);
+
+let table2 = document.createElement('table');
+article.appendChild(table2);
+
 function Cookiesplace(place, minCust, maxCust, avgSale) {
     this.place = place;
     this.minCust = minCust;
@@ -10,13 +19,10 @@ function Cookiesplace(place, minCust, maxCust, avgSale) {
     this.numberCust = [];
     this.cookiesPerHr = [];
     this.totalCookieHr = 0;
-    places.push(this);
-
-
+    places.push(this)}
 Cookiesplace.prototype.getnumberCust = function (min, max) {
     for (let i = 0; i < hours.length; i++) {
         this.numberCust.push(Math.floor(Math.random() * (this.maxCust - this.minCust + 1) + this.minCust));
-
     }
 }
 Cookiesplace.prototype.getcookiesPerHr = function () {
@@ -26,7 +32,6 @@ Cookiesplace.prototype.getcookiesPerHr = function () {
     }
 }
 Cookiesplace.prototype.render = function () {
-    
     let tableHeader = document.createElement('tr');
     table2.appendChild(tableHeader);
     let tableEl2 = document.createElement('td');
@@ -41,12 +46,9 @@ Cookiesplace.prototype.render = function () {
     tableHeader.appendChild(tableEl4);
     tableEl4.textContent = this.totalCookieHr;
 }
-}
-let container = document.getElementById('cookies');
-let article = document.createElement('article');
-container.appendChild(article);
-let table2 = document.createElement('table2');
-article.appendChild(table2);
+
+
+
 function row1() {
     let line1 = document.createElement('tr');
     table2.appendChild(line1);
@@ -63,8 +65,10 @@ function row1() {
     header3.textContent = 'Daily Location Total';
 }
 function lastRow() {
+    let lastrow = document.createElement('tfoot');
+    table2.appendChild(lastrow);
     let lastLine = document.createElement('tr');
-    table2.appendChild(lastLine);
+    lastrow.appendChild(lastLine);
     let data1 = document.createElement('td');
     lastLine.appendChild(data1);
     data1.textContent = 'Totals';
@@ -79,7 +83,6 @@ function lastRow() {
     lastLine.appendChild(data2);
     data2.textContent = total;
     }
-
 let data3 = document.createElement('td');
 lastLine.appendChild(data3);
 data3.textContent = total2;
@@ -111,5 +114,27 @@ let lima = new Cookiesplace('Lima', 2, 16, 4.6);
 lima.getnumberCust();
 lima.getcookiesPerHr();
 lima.render();
-
 lastRow();
+
+let form = document.getElementById('newCookieStand');
+form.addEventListener('submit', addnewbranch);
+
+    function addnewbranch(event){
+event.preventDefault();
+let branchName = event.target.place.value;
+let minimumCust = event.target.minCust.value;
+let maximumCust = event.target.maxCust.value;
+let averageSale = event.target.avgSale.value;
+
+let newBranch = new Cookiesplace(branchName, minimumCust, maximumCust, averageSale );
+
+table2.deleteTFoot();
+
+newBranch.getnumberCust();
+newBranch.getcookiesPerHr();
+newBranch.render();
+lastRow();
+
+
+}
+
