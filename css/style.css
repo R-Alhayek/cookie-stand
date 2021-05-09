@@ -1,11 +1,17 @@
 table, td {
     border: 1px rgb(0, 0, 0) solid;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #910196;
     
+}
+table {
+    background-color: rgb(133, 227, 240);
 }
  
 h1 {
     color: rgb(59, 59, 59);
     text-align: center;
+    font-family:fantasy;
 }
 nav ul li  {
     display: inline-block;
@@ -20,7 +26,7 @@ li a {
     text-decoration: none;
 }
 body {
-    background-color:#06aadb ;
+    background-color:#39c5f0 ;
 }
 div {
     
@@ -30,8 +36,9 @@ div {
 section p {
  font-size: 25px;
  text-align: center;
- color: rgb(61, 60, 60);
+ color:rgb(3, 3, 146);
  font-weight: bolder;
+ font-family: Georgia, 'Times New Roman', Times, serif;
 }
 section img {
     width: 600px;
@@ -41,8 +48,9 @@ section img {
 div p {
     font-size: 25px;
     text-align: center;
-    color: rgb(61, 60, 60);
+    color: rgb(3, 3, 146);
     font-weight: bolder;   
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 div img {
     border-width: 2px;
